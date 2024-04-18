@@ -8,10 +8,11 @@ import AddTodo from "./pages/addTodo/AddTodo.jsx";
 import TodoList from "./pages/todoList/TodoList.jsx";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
+import todosReducer from "./redux/todosReducer.jsx";
 
 const store = configureStore({
   reducer: {
-    // todos:
+    todos: todosReducer,
   },
 });
 
