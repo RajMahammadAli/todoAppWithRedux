@@ -1,14 +1,20 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addTodo } from "../../redux/todosReducer";
+import { v4 as uuidv4 } from "uuid";
 
 const AddTodo = () => {
   const [todo, setTodo] = useState("");
   const navigate = useNavigate();
+  const todos = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(todo);
     if (todo.length > 0) {
+      dispatch(addTodo({ id: uuidv4(), todo, isCompleted: false }));
       navigate("/");
     }
     setTodo("");
